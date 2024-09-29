@@ -126,7 +126,20 @@ export function DataTable<TData, TValue>({
             size="sm"
             onClick={() =>
               setPagination((prev) => ({
-                pageIndex: 1,
+                ...prev,
+                pageSize: BASE_PER_PAGE,
+              }))
+            }
+            disabled={Number(pageSize) <= BASE_PER_PAGE}
+          >
+            Reset
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setPagination((prev) => ({
+                pageIndex: prev.pageIndex,
                 pageSize:
                   Number(prev.pageSize) <= BASE_PER_PAGE
                     ? BASE_PER_PAGE
@@ -142,7 +155,7 @@ export function DataTable<TData, TValue>({
             size="sm"
             onClick={() =>
               setPagination((prev) => ({
-                pageIndex: 1,
+                pageIndex: prev.pageIndex,
                 pageSize: Number(prev.pageSize) + BASE_PER_PAGE,
               }))
             }

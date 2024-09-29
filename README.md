@@ -35,10 +35,12 @@ To run the application locally:
    ```
 
 2. Navigate to the project folder:
+
    ```bash
    cd double-v-partners_test
 
    ```
+
 3. Install dependencies:
 
    ```bash
@@ -47,6 +49,7 @@ To run the application locally:
    ```
 
 4. Run the application:
+
    ```bash
    npm run dev
 
