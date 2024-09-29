@@ -2,6 +2,17 @@
   "name": "double-v-partners_test",
   "private": true,
   "version": "0.0.0",
+  "keywords": [
+    "clean-architecture",
+    "React",
+    "frontend",
+    "github-api",
+    "css-framework",
+    "clean",
+    "solid"
+  ],
+  "description": "Prueba técnica para Frontend Semi Senior en Double V Partners. El objetivo es crear una aplicación web utilizando React, que consuma la API pública de GitHub para mostrar una lista de usuarios. Se prioriza el uso de buenas prácticas, incluyendo la arquitectura hexagonal, gestión de estilos con un framework CSS compatible con distintos navegadores, y uso de iconos con librerías como Font Awesome.",
+  "author": "Camilo Andrés Vargas López",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,18 +21,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.446.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
