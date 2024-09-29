@@ -8,8 +8,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@domain/*":["./domain/*"],
-      "@infrastructure/*":["./infrastructure/*"],
+      "@domain/*": ["./domain/*"],
+      "@infrastructure/*": ["./infrastructure/*"],
+      "@mocks/*": ["./mocks/*"]
     }
   }
 }

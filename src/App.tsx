@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useState } from "react"
 import { type User } from "@domain/models/userModel"
 import { userService } from "@domain/services/userService"
-import { httpAxios } from "@infrastructure/instances/httpAxios"
-import { userRepository } from "@infrastructure/repositories/userRepository"
+import { userRepositoryFake } from "@infrastructure/instances/userRepositoryFake"
 
 function App() {
   const [users, setUsers] = useState<User[]>([])
 
   const getUsers = useCallback(async () => {
     try {
-      const response = await userService(userRepository(httpAxios)).getUsers()
+      const response = await userService(userRepositoryFake).getUsers()
       setUsers(response)
     } catch (exception) {
       console.error(exception)

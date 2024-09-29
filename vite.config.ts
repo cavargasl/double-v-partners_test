@@ -10,6 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "@domain": path.resolve(__dirname, "./domain"),
       "@infrastructure": path.resolve(__dirname, "./infrastructure"),
+      "@mocks": path.resolve(__dirname, "./mocks"),
     },
   },
 })
