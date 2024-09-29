@@ -11,7 +11,7 @@
     "clean",
     "solid"
   ],
-  "description": "Prueba técnica para Frontend Semi Senior en Double V Partners. El objetivo es crear una aplicación web utilizando React, que consuma la API pública de GitHub para mostrar una lista de usuarios. Se prioriza el uso de buenas prácticas, incluyendo la arquitectura hexagonal, gestión de estilos con un framework CSS compatible con distintos navegadores, y uso de iconos con librerías como Font Awesome.",
+  "description": "This is a React-based application that allows users to search for GitHub profiles using the public GitHub API. The app provides a clean and intuitive interface to view user profile details and features a robust architecture designed for scalability and maintainability.",
   "author": "Camilo Andrés Vargas López",
   "type": "module",
   "scripts": {
@@ -21,6 +21,7 @@
     "preview": "vite preview",
     "prettier": "prettier --check .",
     "format": "prettier --ignore-path .gitignore --ext ts,tsx,css --write .",
+    "test": "",
     "prepare": "husky"
   },
   "dependencies": {
