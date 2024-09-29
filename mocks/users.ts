@@ -1,4 +1,7 @@
-import { type UserDTO } from "@infrastructure/http/dto/userDTO"
+import {
+  type UserDTO,
+  type UserSearchDTO,
+} from "@infrastructure/http/dto/userDTO"
 
 export const usersMock: UserDTO[] = [
   {
@@ -646,3 +649,9 @@ export const usersMock: UserDTO[] = [
     site_admin: false,
   },
 ]
+
+export const usersSearchMock: UserSearchDTO = {
+  incomplete_results: true,
+  items: usersMock,
+  total_count: usersMock.length,
+}

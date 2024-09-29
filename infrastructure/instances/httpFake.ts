@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { type Http } from "@domain/repositories/http"
-import { usersMock } from "@mocks/users"
+import { usersMock, usersSearchMock } from "@mocks/users"
 
 export const httpFake: Http = {
   get: async <T>(
@@ -11,6 +11,13 @@ export const httpFake: Http = {
     _config?: any
   ) => {
     const response = await usersMock
+    if (_params)
+      return {
+        ...usersSearchMock,
+        items: usersSearchMock.items.filter((item) =>
+          item.login.includes(_params.q)
+        ),
+      } as T
     return response as T
   },
   post: async <T>(
