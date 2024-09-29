@@ -3,13 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "keywords": [
-    "clean-architecture",
+    "hexagonal-architecture",
     "React",
     "frontend",
     "github-api",
-    "css-framework",
-    "clean",
-    "solid"
+    "clean-code",
+    "shadcn-ui"
   ],
   "description": "This is a React-based application that allows users to search for GitHub profiles using the public GitHub API. The app provides a clean and intuitive interface to view user profile details and features a robust architecture designed for scalability and maintainability.",
   "author": "Camilo Andrés Vargas López",
