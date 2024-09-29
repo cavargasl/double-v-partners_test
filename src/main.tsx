@@ -6,10 +6,16 @@ import App from "./App.tsx"
 
 import "./index.css"
 
+import NotFoundPage from "./components/NotFoundPage.tsx"
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ])
 
