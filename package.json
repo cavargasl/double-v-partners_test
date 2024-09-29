@@ -20,7 +20,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --ignore-path .gitignore",
     "preview": "vite preview",
     "prettier": "prettier --check .",
-    "format": "prettier --ignore-path .gitignore --ext ts,tsx,css --write ."
+    "format": "prettier --ignore-path .gitignore --ext ts,tsx,css --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
@@ -47,6 +48,8 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "globals": "^15.9.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
