@@ -6,8 +6,10 @@ import { type UserDTO, type UserSearchDTO } from "../http/dto/userDTO"
 
 export const userRepository = (client: Http): UserRepository => {
   return {
-    getUsers: async () => {
-      const users = await client.get<UserDTO[]>(`/users`)
+    getUsers: async (pagination) => {
+      const users = await client.get<UserDTO[]>(`/users`, {
+        per_page: pagination ? pagination.per_page : null,
+      })
       return users.map(
         (dto): User => ({
           avatarUrl: dto.avatar_url,

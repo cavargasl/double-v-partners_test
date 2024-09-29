@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { type User } from "@domain/models/userModel"
 import { userService } from "@domain/services/userService"
-import { userRepositoryFake } from "@infrastructure/instances/userRepositoryFake"
+import { httpAxios } from "@infrastructure/instances/httpAxios"
+import { userRepository } from "@infrastructure/repositories/userRepository"
+import { useSearchParams } from "react-router-dom"
 
 import { Input } from "./components/ui/input"
 import UserTable from "./components/userTable/UserTable"
@@ -12,14 +14,19 @@ function App() {
   const [search, setSearch] = useState<string>("")
   const isFirstRender = useRef(true)
 
+  const [searchParams] = useSearchParams()
+  const per_page = searchParams.get("per_page")
+
   const getUsers = useCallback(async () => {
     try {
-      const response = await userService(userRepositoryFake).getUsers()
+      const response = await userService(userRepository(httpAxios)).getUsers({
+        per_page: Number(per_page),
+      })
       setUsers(response)
     } catch (exception) {
       console.error(exception)
     }
-  }, [])
+  }, [per_page])
 
   useEffect(() => {
     getUsers()
@@ -32,8 +39,9 @@ function App() {
     if (search.trim().length <= 0) return getUsers()
 
     try {
-      const response =
-        await userService(userRepositoryFake).getUserSearch(debouncedSearchable)
+      const response = await userService(
+        userRepository(httpAxios)
+      ).getUserSearch(debouncedSearchable)
       setUsers(response)
     } catch (exception) {
       console.error(exception)
@@ -51,7 +59,7 @@ function App() {
       <h1 className="mb-14 text-center text-2xl font-bold">
         GitHub User Search Application - React Frontend
       </h1>
-      <div className="mx-auto flex max-w-fit flex-col gap-10">
+      <div className="mx-auto flex w-[300px] flex-col gap-10">
         <Input
           type="search"
           placeholder="Search user by username"
@@ -59,7 +67,7 @@ function App() {
           onChange={(e) => setSearch(e.target.value)}
         />
         {users.length ? (
-          <UserTable users={users} />
+          <UserTable users={users} isSearching={!!search.trim().length} />
         ) : (
           <p className="text-center font-semibold italic">No find user</p>
         )}
