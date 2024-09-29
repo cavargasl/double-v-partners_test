@@ -12,9 +12,10 @@ export function useUsers() {
 
   const getUsers = useCallback(async () => {
     try {
-      const response = await userService(userRepository(httpAxios)).getUsers({
-        per_page: Number(per_page),
-      })
+      const pagination = per_page ? { per_page: Number(per_page) } : undefined
+      const response = await userService(userRepository(httpAxios)).getUsers(
+        pagination
+      )
       setUsers(response)
     } catch (exception) {
       console.error(exception)
