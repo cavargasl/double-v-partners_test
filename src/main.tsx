@@ -1,17 +1,22 @@
-import { StrictMode } from "react"
+/* eslint-disable react-refresh/only-export-components */
+import { lazy, StrictMode, Suspense } from "react"
 import { createRoot } from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-import App from "./App.tsx"
-
 import "./index.css"
 
-import NotFoundPage from "./components/NotFoundPage.tsx"
+const App = lazy(() => import("./App.tsx"))
+const NotFoundPage = lazy(() => import("./components/NotFoundPage.tsx"))
+const UserDetail = lazy(() => import("./components/userDetail/UserDetail.tsx"))
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/:userId",
+    element: <UserDetail />,
   },
   {
     path: "*",
@@ -21,6 +26,14 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense
+      fallback={
+        <div className="flex h-screen items-center justify-center text-2xl">
+          Loading ...
+        </div>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>
 )

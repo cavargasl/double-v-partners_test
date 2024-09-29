@@ -19,6 +19,23 @@ export type UserDTO = {
   site_admin: boolean
 }
 
+export type UserByIdDTO = UserDTO & {
+  name: string | null
+  company: string | null
+  blog: string | null
+  location: string | null
+  email: string | null
+  hireable: boolean | null
+  bio: string | null
+  twitter_username: string | null
+  public_repos: number
+  public_gists: number
+  followers: number
+  following: number
+  created_at: string
+  updated_at: string
+}
+
 export type UserSearchDTO = {
   total_count: number
   items: UserDTO[]
