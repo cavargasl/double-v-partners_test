@@ -18,3 +18,9 @@ export type UserDTO = {
   type: string
   site_admin: boolean
 }
+
+export type UserSearchDTO = {
+  total_count: number
+  items: UserDTO[]
+  incomplete_results: boolean
+}

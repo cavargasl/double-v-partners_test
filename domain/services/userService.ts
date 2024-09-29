@@ -4,5 +4,6 @@ export const userService = (repository: UserRepository): UserRepository => {
   return {
     getUsers: () => repository.getUsers(),
     getUserById: (id) => repository.getUserById(id),
+    getUserSearch: (name) => repository.getUserSearch(name),
   }
 }

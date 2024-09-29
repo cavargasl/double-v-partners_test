@@ -2,7 +2,7 @@ import { type User } from "@domain/models/userModel"
 import { type Http } from "@domain/repositories/http"
 import { type UserRepository } from "@domain/repositories/userRepository"
 
-import { type UserDTO } from "../http/dto/userDTO"
+import { type UserDTO, type UserSearchDTO } from "../http/dto/userDTO"
 
 export const userRepository = (client: Http): UserRepository => {
   return {
@@ -23,6 +23,18 @@ export const userRepository = (client: Http): UserRepository => {
         profileUrl: user.html_url,
         username: user.login,
       }
+    },
+    getUserSearch: async (name) => {
+      const users = await client.get<UserSearchDTO>(`/search/users`, {
+        q: name,
+      })
+      return users.items.map(
+        (dto): User => ({
+          avatarUrl: dto.avatar_url,
+          profileUrl: dto.html_url,
+          username: dto.login,
+        })
+      )
     },
   }
 }
