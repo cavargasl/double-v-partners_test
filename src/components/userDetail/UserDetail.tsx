@@ -15,7 +15,11 @@ export default function UserDetail() {
   const [user, setUser] = useState<UserDetail>()
 
   const getUserDetail = useCallback(async () => {
-    if (!userId) return navigate({ pathname: "/not-found" })
+    if (!userId)
+      return navigate("/404", {
+        replace: true,
+        state: { message: "User not found" },
+      })
     try {
       const response = await userService(userRepository(httpAxios)).getUserById(
         userId
@@ -23,6 +27,7 @@ export default function UserDetail() {
       setUser(response)
     } catch (exception) {
       console.error(exception)
+      navigate("/404", { replace: true, state: { message: "User not found" } })
     }
   }, [userId, navigate])
 
